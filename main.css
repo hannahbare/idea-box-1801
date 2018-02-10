@@ -63,13 +63,16 @@ section {
 }
 
 article {
-  height: 20rem;
-  width: 75%;
+  position: relative;
   margin: 1rem auto 3rem auto;
+  height: 14rem;
+  width: 75%;
   background-color: lightblue;
 }
 
 h2 {
+  display: inline-block;
+  margin: 0;
   font-family: 'Bitter', serif;
 }
 
@@ -77,6 +80,21 @@ h2 {
   height: 2rem;
 }
 
+#card__icon--delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+
+.card__icons--votes {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+h6 {
+  display: inline-block;
+}
 
 
 
