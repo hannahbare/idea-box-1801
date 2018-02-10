@@ -3,28 +3,24 @@ var $userInputBody = $('#userinput__body');
 var $saveBtn = $('#userinput__btn');
 
 
-$saveBtn.on('click', newInstance);
+$saveBtn.on('click', appendCard);
+$('card__icon--upvote').on('click', toggleUpvote);
+$('card__icon--downvote').on('click', toggleDownvote);
 
-
-function newInstance(){
-  var $userTitleVal = $userInputTitle.val();
-  var $userBodyVal = $userInputBody.val();
-  appendCard($userTitleVal, $userBodyVal);
-  clearInputs();
-}
-
-function appendCard(title, body){
+function appendCard(){
+  var newCard = new Card;
   var $section = $('.card__list');
   $section.prepend(`<article>
-      <h2 contenteditable="false">${title}</h2>
+      <h2 contenteditable="false">${newCard.title}</h2>
       <img src="assets/delete.svg" class="card__icon" id="card__icon--delete">
-      <p contenteditable="false">${body}</p>
+      <p contenteditable="false">${newCard.body}</p>
       <div class="card__icon--votes">
-        <img src="assets/upvote.svg" class="card__icon">
+        <img src="assets/upvote.svg" class="card__icon" id="card__icon--upvote">
         <img src="assets/downvote.svg" class="card__icon" id="card__icon--downvote">
       </div>
-      <h6>quality:</h6>
-    </article>`);   
+      <h6>quality: ${newCard.quality}</h6>
+    </article>`);
+  clearInputs();
 }
 
 function clearInputs(){
@@ -34,17 +30,40 @@ function clearInputs(){
 
   // var newCard = new Card(date.now(), $userTitleVal, $userBodyVal);
 //create a new instance- capturing the id (JSON)
-//
-//append the information to the bottom section-- template literals
 
-
-
-
-function Card(id, title, body, quality){
+function Card(id, title, body){
   this.id = id;
-  this.title = title;
-  this.body = body;
-  this.quality = 'swill' || quality;
+  this.title = $userInputTitle.val();
+  this.body = $userInputBody.val();
+  this.quality = 'Swill';
 }
+
+Card.prototype.toggleUpvote = function(){
+  // console.log('&userBodyVal');
+  if(this.quality === 'Swill'){
+      this.quality = 'Plausible';
+  } else if (this.quality === 'Plausible'){
+    this.quality = 'Genius';
+  }
+}
+
+Card.prototype.toggleDownvote = function(){
+    if(this.quality === 'Genius'){
+      this.quality = 'Plausible';
+  } else if (this.quality === 'Plausible'){
+    this.quality = 'Swill';
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
