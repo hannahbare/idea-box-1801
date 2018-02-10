@@ -14,8 +14,8 @@ function newInstance(){
 }
 
 function appendCard(title, body){
-  var $section = $('section');
-  $section.append(`<article>
+  var $section = $('.card__list');
+  $section.prepend(`<article>
       <h2 contenteditable="false">${title}</h2>
       <img src="assets/delete.svg" class="card__icon" id="card__icon--delete">
       <p contenteditable="false">${body}</p>
