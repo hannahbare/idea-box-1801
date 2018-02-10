@@ -1,0 +1,69 @@
+@import "reset.css"
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+  height: 100vh;
+  margin: 0;
+}
+
+header {
+  background-color: #E5F3F2;
+  text-align: center;
+}
+
+form {
+  width: 86%;
+  margin: auto;
+}
+
+h1 {
+  font-family: 'Bitter', serif;
+  font-size: 5rem;
+  color: #00A79D;
+  margin-top: 0;
+  margin-bottom: 40px;
+  padding-top: 45px;
+}
+
+.title__color {
+  color: #6D6E71;
+  margin-left: -4px;
+}
+
+input {
+  box-sizing: border-box;
+  display: block;
+  height: 4rem;
+  width: 100%;
+  margin: 0 auto 1.5rem auto;
+  border: 1px solid #6D6E71;
+  padding: 1.1rem 1rem 0rem 1.1rem;
+}
+
+input::placeholder {
+  font-size: 2.5rem;
+  color: #C5C6C8;
+  padding-top: 1rem;
+}
+
+#userinput__btn {
+  background-color: #00A79D;
+  font-size: 2rem;
+  color: white;
+  height: 4rem;
+  width: 100%;
+  margin: .5rem 0 3rem 0;
+}
+
+section {
+  height: 50%;
+}
+
+h2 {
+  font-family: 'Roboto', sans-serif;
+}
