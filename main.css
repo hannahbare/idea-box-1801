@@ -38,14 +38,17 @@ h1 {
 input {
   box-sizing: border-box;
   display: block;
-  height: 4rem;
-  width: 100%;
   margin: 0 auto 1.5rem auto;
   border: 1px solid #6D6E71;
-  padding: 1.1rem 1rem 0rem 1.1rem;
+  padding: .5rem 1rem;
+  font-size: 2rem;
+  height: 4rem;
+  width: 100%;
 }
 
 input::placeholder {
+  display: flex;
+  align-items: center;
   font-size: 2.5rem;
   color: #C5C6C8;
   padding-top: 1rem;
@@ -60,10 +63,49 @@ input::placeholder {
   margin: .5rem 0 3rem 0;
 }
 
-section {
+.card__list {
   height: 50%;
 }
 
-h2 {
-  font-family: 'Roboto', sans-serif;
+article {
+  position: relative;
+  margin: 1rem auto 1rem auto;
+  border-bottom: 1px solid #C5C6C8;;
+  height: 12rem;
+  width: 75%;
 }
+
+h2 {
+  display: inline-block;
+  margin: 0;
+  font-family: 'Bitter', serif;
+}
+
+.card__icon {
+  height: 2rem;
+}
+
+#card__icon--delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.card__icon--votes {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+h6 {
+  display: inline-block;
+}
+
+
+
+
+
+
+
+
+
+
