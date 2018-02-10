@@ -21,15 +21,16 @@
 
   <section>
 
-    <input type="text" name="search" placeholder="Search" aria-label="Search field">
+    <input type="text" name="search" placeholder="Search" aria-label="Search field" id="searchbar">
     <article>
-      <button></button>
-      <h2>Title</h2>
-      <p>Lots of things to say!</p>
-      <button></button>
-      <button></button>
+      <h2 contenteditable="false">Title</h2>
+      <img src="assets/delete.svg" class="card__icon" id="card__icon--delete">
+      <p contenteditable="false">Lots of things to say!</p>
+      <div class="card__icon--votes">
+        <img src="assets/upvote.svg" class="card__icon">
+        <img src="assets/downvote.svg" class="card__icon" id="card__icon--downvote">
+      </div>
       <h6>quality:</h6>
-      <hr>
     </article>
 
   </section>
