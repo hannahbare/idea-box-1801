@@ -63,7 +63,7 @@ input::placeholder {
   margin: .5rem 0 3rem 0;
 }
 
-section {
+.card__list {
   height: 50%;
 }
 
@@ -73,7 +73,6 @@ article {
   border-bottom: 1px solid #C5C6C8;;
   height: 12rem;
   width: 75%;
-  background-color: lightblue;
 }
 
 h2 {
