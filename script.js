@@ -27,7 +27,7 @@ function clearInputs(){
   $userInputTitle.val('');
   $userInputBody.val('');
 }
-
+c
   // var newCard = new Card(date.now(), $userTitleVal, $userBodyVal);
 //create a new instance- capturing the id (JSON)
 
