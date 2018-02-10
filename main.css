@@ -4,7 +4,6 @@
   box-sizing: border-box;
 }
 
-
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 20px;
@@ -13,41 +12,46 @@ body {
 }
 
 header {
-  height: 50%;
   background-color: #E5F3F2;
+  text-align: center;
 }
 
 h1 {
-  margin: 0;
-  padding: 1rem 0;
-  font-size: 2rem;
-  color: #00A79D;
-  text-align: center;
   font-family: 'Bitter', serif;
+  font-size: 5rem;
+  color: #00A79D;
+  margin-top: 0;
+  margin-bottom: 40px;
+  padding-top: 45px;
 }
 
 .title__color {
   color: #6D6E71;
+  margin-left: -4px;
 }
 
 input {
-  border: 1px solid #6D6E71;
-  padding-left: .8rem;
   display: block;
   height: 2rem;
+  width: 72%;
+  margin: 0 auto 1.5rem auto;
+  border: 1px solid #6D6E71;
+  padding: 1.1rem 1rem 0rem 1.1rem;
 }
 
 input::placeholder {
-  font-size: 1.4rem;
+  font-size: 2rem;
   color: #C5C6C8;
-}
-
-#userinput__body {
-  height: 10rem;
+  padding-top: 1rem;
 }
 
 #userinput__btn {
   background-color: #00A79D;
+  font-size: 2rem;
+  color: white;
+  height: 4rem;
+  width: 75%;
+  margin: 1rem 0 3rem 0;
 }
 
 section {
@@ -56,5 +60,4 @@ section {
 
 h2 {
   font-family: 'Roboto', sans-serif;
-
 }
