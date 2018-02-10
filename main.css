@@ -54,10 +54,46 @@ input::placeholder {
   margin: 1rem 0 3rem 0;
 }
 
+
+
+
+
 section {
   height: 50%;
 }
 
-h2 {
-  font-family: 'Roboto', sans-serif;
+article {
+  height: 20rem;
+  width: 75%;
+  margin: 1rem auto 3rem auto;
+  background-color: lightblue;
 }
+
+h2 {
+  font-family: 'Bitter', serif;
+}
+
+.card__icons {
+  height: 2rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
