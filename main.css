@@ -1,0 +1,60 @@
+@import "reset.css"
+
+* {
+  box-sizing: border-box;
+}
+
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+  height: 100vh;
+  margin: 0;
+}
+
+header {
+  height: 50%;
+  background-color: #E5F3F2;
+}
+
+h1 {
+  margin: 0;
+  padding: 1rem 0;
+  font-size: 2rem;
+  color: #00A79D;
+  text-align: center;
+  font-family: 'Bitter', serif;
+}
+
+.title__color {
+  color: #6D6E71;
+}
+
+input {
+  border: 1px solid #6D6E71;
+  padding-left: .8rem;
+  display: block;
+  height: 2rem;
+}
+
+input::placeholder {
+  font-size: 1.4rem;
+  color: #C5C6C8;
+}
+
+#userinput__body {
+  height: 10rem;
+}
+
+#userinput__btn {
+  background-color: #00A79D;
+}
+
+section {
+  height: 50%;
+}
+
+h2 {
+  font-family: 'Roboto', sans-serif;
+
+}
