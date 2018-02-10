@@ -16,6 +16,11 @@ header {
   text-align: center;
 }
 
+form {
+  width: 86%;
+  margin: auto;
+}
+
 h1 {
   font-family: 'Bitter', serif;
   font-size: 5rem;
@@ -31,16 +36,17 @@ h1 {
 }
 
 input {
+  box-sizing: border-box;
   display: block;
-  height: 2rem;
-  width: 72%;
+  height: 4rem;
+  width: 100%;
   margin: 0 auto 1.5rem auto;
   border: 1px solid #6D6E71;
   padding: 1.1rem 1rem 0rem 1.1rem;
 }
 
 input::placeholder {
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: #C5C6C8;
   padding-top: 1rem;
 }
@@ -50,7 +56,7 @@ input::placeholder {
   font-size: 2rem;
   color: white;
   height: 4rem;
-  width: 75%;
+  width: 100%;
   margin: 1rem 0 3rem 0;
 }
 
