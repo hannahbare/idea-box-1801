@@ -46,9 +46,9 @@ function getCards(newCard){
   return parseCard;
 }
 
-$(document).ready(persistCards);
+$(document).ready(displayCardsToPage);
 
-function persistCards(){
+function displayCardsToPage(){
   for(var i = 0; i < localStorage.length; i++){
     var storedCard = getCards(localStorage.key(i));
     appendCard(storedCard);
