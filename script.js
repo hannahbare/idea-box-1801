@@ -1,10 +1,7 @@
-window.onload = function(){
-  getCardsFromStorage();
-}
-
 var $userInputTitle = $('#userinput__title');
 var $userInputBody = $('#userinput__body');
 var $saveBtn = $('#userinput__btn');
+var $section = $('.card__list');
 
 $saveBtn.on('click', newInstance);
 
@@ -20,11 +17,12 @@ function newInstance(e){
   var newCard = new Card();
   appendCard(newCard);
   storeCard(newCard.id, newCard);
+  getCards(newCard);
   clearInputs();
+  enableBtns();
 }
 
 function appendCard(newCard) {
-  var $section = $('.card__list');
   $section.prepend(`<article id="${newCard.id}">
       <h2 contenteditable="false">${newCard.title}</h2>
       <img src="assets/delete.svg" class="card__icon" id="card__icon--delete">
@@ -35,26 +33,27 @@ function appendCard(newCard) {
       </div>
       <h6>quality: ${newCard.quality}</h6>
     </article>`);
-  // console.log(newCard.id)
 }
 
 function storeCard(id, newCard) {
   var stringifiedNewCard = JSON.stringify(newCard);
   localStorage.setItem(id, stringifiedNewCard);
-};
+}
 
-// function getCardsFromStorage(){
-//   localStorage.getItem();
-//   // for(var i = 0; )
-//   // localStorage.getItem(keys);
-//   // parse
-//   // put it on the page
-// }
+function getCards(newCard){
+  var getCard = localStorage.getItem(newCard);
+  var parseCard = JSON.parse(getCard);
+  return parseCard;
+}
 
+$(document).ready(persistCards);
 
-// function myStore(string1, string2){
-//   localStorage.setItem(string1, string2);
-// }
+function persistCards(){
+  for(var i = 0; i < localStorage.length; i++){
+    var storedCard = getCards(localStorage.key(i));
+    appendCard(storedCard);
+  }
+}
 
 function clearInputs(){
   $userInputTitle.val('');
