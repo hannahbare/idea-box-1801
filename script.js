@@ -1,3 +1,7 @@
+window.onload = function(){
+  getCardsFromStorage();
+}
+
 var $userInputTitle = $('#userinput__title');
 var $userInputBody = $('#userinput__body');
 var $saveBtn = $('#userinput__btn');
@@ -31,18 +35,26 @@ function appendCard(newCard) {
       </div>
       <h6>quality: ${newCard.quality}</h6>
     </article>`);
-  console.log(newCard.id)
+  // console.log(newCard.id)
 }
 
 function storeCard(id, newCard) {
   var stringifiedNewCard = JSON.stringify(newCard);
-  var stringifiedId = JSON.stringify(id);
-  localStorage.setItem(stringifiedId, stringifiedNewCard);
+  localStorage.setItem(id, stringifiedNewCard);
 };
 
-function myStore(string1, string2){
-  localStorage.setItem(string1, string2);
-}
+// function getCardsFromStorage(){
+//   localStorage.getItem();
+//   // for(var i = 0; )
+//   // localStorage.getItem(keys);
+//   // parse
+//   // put it on the page
+// }
+
+
+// function myStore(string1, string2){
+//   localStorage.setItem(string1, string2);
+// }
 
 function clearInputs(){
   $userInputTitle.val('');
