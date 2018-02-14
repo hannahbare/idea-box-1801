@@ -16,11 +16,6 @@ header {
   text-align: center;
 }
 
-form {
-  width: 86%;
-  margin: auto;
-}
-
 h1 {
   font-family: 'Bitter', serif;
   font-size: 5rem;
@@ -36,14 +31,14 @@ h1 {
 }
 
 input {
-  box-sizing: border-box;
   display: block;
   margin: 0 auto 1.5rem auto;
-  border: 1px solid #6D6E71;
   padding: .5rem 1rem;
+  border: 1px solid #6D6E71;
+  box-sizing: border-box;
   font-size: 2rem;
   height: 4rem;
-  width: 100%;
+  width: 86%;
 }
 
 input::placeholder {
@@ -59,8 +54,16 @@ input::placeholder {
   font-size: 2rem;
   color: white;
   height: 4rem;
-  width: 100%;
+  width: 86%;
   margin: .5rem 0 3rem 0;
+}
+
+#userinput__btn:hover {
+  background-color: #045E55;
+}
+
+#input-submit:disabled {
+  opacity: 0.5;
 }
 
 .card__list {
@@ -83,12 +86,8 @@ h2 {
 
 .card__icon {
   height: 2rem;
-}
-
-#card__icon--delete {
-  position: absolute;
-  top: 0;
-  right: 0;
+  width: 2rem;
+  border: none;
 }
 
 .card__icon--votes {
@@ -96,16 +95,37 @@ h2 {
   vertical-align: middle;
 }
 
-h6 {
-  display: inline-block;
+.card__icon--upvote {
+  background-image: url('assets/upvote.svg');
+  background-repeat: no-repeat;
 }
 
+.card__icon--upvote:hover {
+  background-image: url('assets/upvote-hover.svg');
+}
 
+.card__icon--downvote {
+  background-image: url('assets/downvote.svg');
+  background-repeat: no-repeat;
+}
 
+.card__icon--downvote:hover {
+  background-image: url('assets/downvote-hover.svg');
+}
 
+.card__icon--delete {
+  background-image: url('assets/delete.svg');
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
 
+.card__icon--delete:hover {
+  background-image: url('assets/delete-hover.svg');
+}
 
-
-
-
-
+h6 {
+  display: inline-block;
+  margin-left: 1rem;
+}
