@@ -5,17 +5,9 @@ var $section = $('.card__list');
 
 $(document).ready(displayCardsToPage);
 $saveBtn.on('click', newInstance);
-
-// $userInputTitle.on('keyup', enableBtns);
-// $userInputBody.on('keyup', enableBtns);
-
-// function enableBtns(){
-//   if($userInputTitle.value.length > 0 && $userInputBody.value.length > 0){
-//     $saveBtn.disabled = false;
-//   } else {
-//     $saveBtn.disabled = true;
-//   }
-// }
+$section.on('click', ('.card__icon--upvote'), changeUpvote);
+$section.on('click', ('.card__icon--downvote'), changeDownvote);
+$section.on('click', ('.card__icon--delete'), deleteCard);
 
 function Card(quality){
   this.id = Date.now();
@@ -29,7 +21,6 @@ function newInstance(e){
   var newCard = new Card();
   prependCard(newCard);
   storeCard(newCard.id, newCard);
-  getCards(newCard);
   clearInputs();
 }
 
@@ -63,26 +54,24 @@ function displayCardsToPage(){
   }
 }
 
-$section.on('click', ('.card__icon--upvote'), function(event){
+function changeUpvote(event) {
   event.preventDefault();
   var cardId = $(this).closest('article').attr('id');
-  var getCard = localStorage.getItem(cardId);
-  var parseCard = JSON.parse(getCard);
+  var parseCard = getCards(cardId);
   var qualityText = $(this).siblings('h6');;
   if(parseCard.quality === 'Swill'){
     qualityText.text('quality: Plausible');
     qualityChange(cardId, 'Plausible');
   } else if (parseCard.quality === 'Plausible'){
-      qualityText.text('quality: Genius');
-      qualityChange(cardId, 'Genius');
+    qualityText.text('quality: Genius');
+    qualityChange(cardId, 'Genius');
   }
-});
+};
 
-$section.on('click', ('.card__icon--downvote'), function(event){
+function changeDownvote(event){
   event.preventDefault();
   var cardId = $(this).closest('article').attr('id');
-  var getCard = localStorage.getItem(cardId);
-  var parseCard = JSON.parse(getCard);
+  var parseCard = getCards(cardId);
   var qualityText = $(this).siblings('h6');;
   if(parseCard.quality === 'Genius'){
     qualityText.text('quality: Plausible');
@@ -91,37 +80,24 @@ $section.on('click', ('.card__icon--downvote'), function(event){
       qualityText.text('quality: Swill');
       qualityChange(cardId, 'Swill');
   }
-});
+};
 
-$section.on('click', ('.card__icon--delete'), function(event){
+function deleteCard(event){
   event.preventDefault();
   var cardId = $(this).closest('article').attr('id');
   localStorage.removeItem(cardId);
   $(this).closest('article').remove();
-});
+};
 
 function qualityChange(id, newQuality) {
-  var cardId = localStorage.getItem(id);
-  var parsedCard = JSON.parse(cardId);
-  parsedCard.quality = newQuality;
-  var cardId = JSON.stringify(parsedCard);
-  localStorage.setItem(id, cardId);
+  var parseCard = getCards(id);
+  parseCard.quality = newQuality;
+  var updatedCard = JSON.stringify(parseCard);
+  localStorage.setItem(id, updatedCard);
   }
-
 
 function clearInputs(){
   $userInputTitle.val('');
   $userInputBody.val('');
 }
 
-//--------------------------------------------------
-//make a function to toggle on page
-//make that toggling persist
-//make a function to delete on page
-//make 
-//contenteditable -- 
-  //find specific id
-  //run getCards
-  // var parsedCard = getCards();
-  //make change to the card
-  //run storeCard();
