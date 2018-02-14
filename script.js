@@ -78,6 +78,28 @@ $section.on('click', ('.card__icon--upvote'), function(event){
   }
 });
 
+$section.on('click', ('.card__icon--downvote'), function(event){
+  event.preventDefault();
+  var cardId = $(this).closest('article').attr('id');
+  var getCard = localStorage.getItem(cardId);
+  var parseCard = JSON.parse(getCard);
+  var qualityText = $(this).siblings('h6');;
+  if(parseCard.quality === 'Genius'){
+    qualityText.text('quality: Plausible');
+    qualityChange(cardId, 'Plausible');
+  } else if (parseCard.quality === 'Plausible'){
+      qualityText.text('quality: Swill');
+      qualityChange(cardId, 'Swill');
+  }
+});
+
+$section.on('click', ('.card__icon--delete'), function(event){
+  event.preventDefault();
+  var cardId = $(this).closest('article').attr('id');
+  localStorage.removeItem(cardId);
+  $(this).closest('article').remove();
+});
+
 function qualityChange(id, newQuality) {
   var cardId = localStorage.getItem(id);
   var parsedCard = JSON.parse(cardId);
