@@ -30,19 +30,17 @@ function newInstance(e){
   storeCard(newCard.id, newCard);
   getCards(newCard);
   clearInputs();
-  // enableBtns();
 }
 
 function appendCard(newCard) {
-  $section.prepend(`<article id="${newCard.id}">
+  $section.prepend(
+    `<article id="${newCard.id}">
       <h2 contenteditable="false">${newCard.title}</h2>
       <button class="card__icon card__icon--delete"></button>
       <p contenteditable="false">${newCard.body}</p>
-      <div class="card__icon--votes">
-        <button class="card__icon card__icon--upvote"></button>
-        <button class="card__icon card__icon--downvote"></button>
-      </div>
-      <h6>quality: ${newCard.quality}</h6>
+      <button class="card__icon card__icon--upvote bottom"></button>
+      <button class="card__icon card__icon--downvote bottom"></button>
+      <h6 class="bottom">quality: ${newCard.quality}</h6>
     </article>`);
 }
 
@@ -62,9 +60,40 @@ $(document).ready(displayCardsToPage);
 function displayCardsToPage(){
   for(var i = 0; i < localStorage.length; i++){
     var storedCard = getCards(localStorage.key(i));
-    // console.log (localStorage.key(i));
     appendCard(storedCard);
   }
+}
+
+$section.on('click', ('.card__icon--upvote'), function(event){
+  event.preventDefault();
+  var cardId = $(this).closest('article').attr('id');
+
+  if(quality === 'Swill'){
+      this.quality = 'Plausible';
+  } else if (this.quality === 'Plausible'){
+    this.quality = 'Genius';
+  }
+});
+
+
+
+// $section.on('click', ('.card__icon--downvote'), function(event){
+//   event.preventDefault();
+//   var cardId = $(this).closest('article').attr('id');
+//   console.log(cardId);
+//   getCards(key);
+//   if(this.quality === 'Genius'){
+//       this.quality = 'Plausible';
+//   } else if (this.quality === 'Plausible'){
+//     this.quality = 'Swill';
+//   }
+// });
+
+
+
+function clearInputs(){
+  $userInputTitle.val('');
+  $userInputBody.val('');
 }
 
 //--------------------------------------------------
@@ -73,51 +102,8 @@ function displayCardsToPage(){
 //make a function to delete on page
 //make 
 //contenteditable -- 
-
-function toggleUpvote(id){
-  var id = $(this).closest('article').attr('id');
-  console.log(id);
   //find specific id
   //run getCards
-  var parsedCard = getCards();
+  // var parsedCard = getCards();
   //make change to the card
   //run storeCard();
-
-
-  // var articleId = document.getElementById(id);
-  // var target = event.target.id;
-  // target.find('#card__icon--upvote');
-
-  // console.log(target);
-
-
-
-
-
-
-  if(quality === 'Swill'){
-      this.quality = 'Plausible';
-  } else if (this.quality === 'Plausible'){
-    this.quality = 'Genius';
-  }
-}
-
-//the child button with the article with that key id
-
-
-function clearInputs(){
-  $userInputTitle.val('');
-  $userInputBody.val('');
-}
-
-
-// Card.prototype.toggleDownvote = function(){
-//     if(this.quality === 'Genius'){
-//       this.quality = 'Plausible';
-//   } else if (this.quality === 'Plausible'){
-//     this.quality = 'Swill';
-//   }
-// }
-
-
-

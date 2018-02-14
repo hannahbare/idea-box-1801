@@ -17,12 +17,12 @@ header {
 }
 
 h1 {
-  font-family: 'Bitter', serif;
-  font-size: 5rem;
+  font-family: 'Roboto Slab', serif;
+  font-size: 2.3rem;
+  letter-spacing: .08rem;
   color: #00A79D;
-  margin-top: 0;
-  margin-bottom: 40px;
-  padding-top: 45px;
+  margin: 0;
+  padding: 1.2rem;
 }
 
 .title__color {
@@ -33,37 +33,44 @@ h1 {
 input {
   display: block;
   margin: 0 auto 1.5rem auto;
-  padding: .5rem 1rem;
+  padding-left: .5rem;
   border: 1px solid #6D6E71;
   box-sizing: border-box;
   font-size: 2rem;
-  height: 4rem;
+  height: 3rem;
   width: 86%;
 }
 
 input::placeholder {
   display: flex;
   align-items: center;
-  font-size: 2.5rem;
+  font-size: 2rem;
   color: #C5C6C8;
   padding-top: 1rem;
+}
+
+#userinput__title {
+  margin-bottom: .8rem;
+}
+
+#userinput__body {
+  height: 8rem;
 }
 
 #userinput__btn {
   background-color: #00A79D;
   font-size: 2rem;
   color: white;
-  height: 4rem;
   width: 86%;
-  margin: .5rem 0 3rem 0;
+  margin-bottom: 1.6rem;
 }
 
 #userinput__btn:hover {
   background-color: #045E55;
 }
 
-#input-submit:disabled {
-  opacity: 0.5;
+.search {
+  margin: 1.6rem 0 2.6rem;
 }
 
 .card__list {
@@ -74,28 +81,41 @@ article {
   position: relative;
   margin: 1rem auto 1rem auto;
   border-bottom: 1px solid #C5C6C8;;
-  height: 12rem;
-  width: 75%;
+  height: 10rem;
+  width: 86%;
 }
 
 h2 {
   display: inline-block;
   margin: 0;
-  font-family: 'Bitter', serif;
+  font-family: 'Roboto Slab', serif;
+}
+
+p {
+  margin: 0;
+  padding: .4rem 0;
 }
 
 .card__icon {
-  height: 2rem;
-  width: 2rem;
-  border: none;
+  height: 1.6rem;
+  width: 1.6rem;
+  border-radius: 50%;
 }
 
-.card__icon--votes {
-  display: inline-block;
-  vertical-align: middle;
+.card__icon--delete {
+  background-image: url('assets/delete.svg');
+  background-repeat: no-repeat;
+  position: absolute;
+  top: .4rem;
+  right: 0;
+}
+
+.card__icon--delete:hover {
+  background-image: url('assets/delete-hover.svg');
 }
 
 .card__icon--upvote {
+  display: inline-block;
   background-image: url('assets/upvote.svg');
   background-repeat: no-repeat;
 }
@@ -105,24 +125,13 @@ h2 {
 }
 
 .card__icon--downvote {
+  display: inline-block;
   background-image: url('assets/downvote.svg');
   background-repeat: no-repeat;
 }
 
 .card__icon--downvote:hover {
   background-image: url('assets/downvote-hover.svg');
-}
-
-.card__icon--delete {
-  background-image: url('assets/delete.svg');
-  background-repeat: no-repeat;
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
-.card__icon--delete:hover {
-  background-image: url('assets/delete-hover.svg');
 }
 
 h6 {
