@@ -5,35 +5,26 @@ var $section = $('.card__list');
 
 $(document).ready(displayCardsToPage);
 $saveBtn.on('click', newInstance);
-
-// $userInputTitle.on('keyup', enableBtns);
-// $userInputBody.on('keyup', enableBtns);
-
-// function enableBtns(){
-//   if($userInputTitle.value.length > 0 && $userInputBody.value.length > 0){
-//     $saveBtn.disabled = false;
-//   } else {
-//     $saveBtn.disabled = true;
-//   }
-// }
+$section.on('click', ('.card__icon--upvote'), changeUpvote);
+$section.on('click', ('.card__icon--downvote'), changeDownvote);
+$section.on('click', ('.card__icon--delete'), deleteCard);
 
 function Card(quality){
   this.id = Date.now();
   this.title = $userInputTitle.val();
   this.body = $userInputBody.val();
-  this.quality = quality || 'swill';
+  this.quality = quality || 'Swill';
 }
 
 function newInstance(e){
   e.preventDefault();
   var newCard = new Card();
-  appendCard(newCard);
+  prependCard(newCard);
   storeCard(newCard.id, newCard);
-  getCards(newCard);
   clearInputs();
 }
 
-function appendCard(newCard) {
+function prependCard(newCard) {
   $section.prepend(
     `<article id="${newCard.id}">
       <h2 contenteditable="false">${newCard.title}</h2>
@@ -59,52 +50,54 @@ function getCards(newCard){
 function displayCardsToPage(){
   for(var i = 0; i < localStorage.length; i++){
     var storedCard = getCards(localStorage.key(i));
-    appendCard(storedCard);
+    prependCard(storedCard);
   }
 }
 
-$section.on('click', ('.card__icon--upvote'), function(event){
+function changeUpvote(event) {
   event.preventDefault();
   var cardId = $(this).closest('article').attr('id');
-  var getCard = localStorage.getItem(cardId);
-  var parseCard = JSON.parse(getCard);
-  var qualityText = $(this).siblings('h6');
-  if(parseCard.quality === 'swill'){
-    qualityText.text('quality: plausible');
-  } else if (qualityText.text === 'quality: plausible'){
-    qualityText.text('quality: genius');
+  var parseCard = getCards(cardId);
+  var qualityText = $(this).siblings('h6');;
+  if(parseCard.quality === 'Swill'){
+    qualityText.text('quality: Plausible');
+    qualityChange(cardId, 'Plausible');
+  } else if (parseCard.quality === 'Plausible'){
+    qualityText.text('quality: Genius');
+    qualityChange(cardId, 'Genius');
   }
-});
+};
 
+function changeDownvote(event){
+  event.preventDefault();
+  var cardId = $(this).closest('article').attr('id');
+  var parseCard = getCards(cardId);
+  var qualityText = $(this).siblings('h6');;
+  if(parseCard.quality === 'Genius'){
+    qualityText.text('quality: Plausible');
+    qualityChange(cardId, 'Plausible');
+  } else if (parseCard.quality === 'Plausible'){
+      qualityText.text('quality: Swill');
+      qualityChange(cardId, 'Swill');
+  }
+};
 
+function deleteCard(event){
+  event.preventDefault();
+  var cardId = $(this).closest('article').attr('id');
+  localStorage.removeItem(cardId);
+  $(this).closest('article').remove();
+};
 
-// $section.on('click', ('.card__icon--downvote'), function(event){
-//   event.preventDefault();
-//   var cardId = $(this).closest('article').attr('id');
-//   console.log(cardId);
-//   getCards(key);
-//   if(this.quality === 'Genius'){
-//       this.quality = 'Plausible';
-//   } else if (this.quality === 'Plausible'){
-//     this.quality = 'Swill';
-//   }
-// });
-
-
+function qualityChange(id, newQuality) {
+  var parseCard = getCards(id);
+  parseCard.quality = newQuality;
+  var updatedCard = JSON.stringify(parseCard);
+  localStorage.setItem(id, updatedCard);
+  }
 
 function clearInputs(){
   $userInputTitle.val('');
   $userInputBody.val('');
 }
 
-//--------------------------------------------------
-//make a function to toggle on page
-//make that toggling persist
-//make a function to delete on page
-//make 
-//contenteditable -- 
-  //find specific id
-  //run getCards
-  // var parsedCard = getCards();
-  //make change to the card
-  //run storeCard();
