@@ -3,6 +3,7 @@ var $userInputBody = $('#userinput__body');
 var $saveBtn = $('#userinput__btn');
 var $section = $('.card__list');
 
+$(document).ready(displayCardsToPage);
 $saveBtn.on('click', newInstance);
 
 // $userInputTitle.on('keyup', enableBtns);
@@ -20,7 +21,7 @@ function Card(quality){
   this.id = Date.now();
   this.title = $userInputTitle.val();
   this.body = $userInputBody.val();
-  this.quality = 'Swill' || quality;
+  this.quality = quality || 'swill';
 }
 
 function newInstance(e){
@@ -55,8 +56,6 @@ function getCards(newCard){
   return parseCard;
 }
 
-$(document).ready(displayCardsToPage);
-
 function displayCardsToPage(){
   for(var i = 0; i < localStorage.length; i++){
     var storedCard = getCards(localStorage.key(i));
@@ -67,11 +66,13 @@ function displayCardsToPage(){
 $section.on('click', ('.card__icon--upvote'), function(event){
   event.preventDefault();
   var cardId = $(this).closest('article').attr('id');
-
-  if(quality === 'Swill'){
-      this.quality = 'Plausible';
-  } else if (this.quality === 'Plausible'){
-    this.quality = 'Genius';
+  var getCard = localStorage.getItem(cardId);
+  var parseCard = JSON.parse(getCard);
+  var qualityText = $(this).siblings('h6');
+  if(parseCard.quality === 'swill'){
+    qualityText.text('quality: plausible');
+  } else if (qualityText.text === 'quality: plausible'){
+    qualityText.text('quality: genius');
   }
 });
 
