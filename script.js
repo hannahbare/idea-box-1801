@@ -21,19 +21,19 @@ function Card(quality){
   this.id = Date.now();
   this.title = $userInputTitle.val();
   this.body = $userInputBody.val();
-  this.quality = quality || 'swill';
+  this.quality = quality || 'Swill';
 }
 
 function newInstance(e){
   e.preventDefault();
   var newCard = new Card();
-  appendCard(newCard);
+  prependCard(newCard);
   storeCard(newCard.id, newCard);
   getCards(newCard);
   clearInputs();
 }
 
-function appendCard(newCard) {
+function prependCard(newCard) {
   $section.prepend(
     `<article id="${newCard.id}">
       <h2 contenteditable="false">${newCard.title}</h2>
@@ -59,7 +59,7 @@ function getCards(newCard){
 function displayCardsToPage(){
   for(var i = 0; i < localStorage.length; i++){
     var storedCard = getCards(localStorage.key(i));
-    appendCard(storedCard);
+    prependCard(storedCard);
   }
 }
 
@@ -68,28 +68,23 @@ $section.on('click', ('.card__icon--upvote'), function(event){
   var cardId = $(this).closest('article').attr('id');
   var getCard = localStorage.getItem(cardId);
   var parseCard = JSON.parse(getCard);
-  var qualityText = $(this).siblings('h6');
-  if(parseCard.quality === 'swill'){
-    qualityText.text('quality: plausible');
-  } else if (qualityText.text === 'quality: plausible'){
-    qualityText.text('quality: genius');
+  var qualityText = $(this).siblings('h6');;
+  if(parseCard.quality === 'Swill'){
+    qualityText.text('quality: Plausible');
+    qualityChange(cardId, 'Plausible');
+  } else if (parseCard.quality === 'Plausible'){
+      qualityText.text('quality: Genius');
+      qualityChange(cardId, 'Genius');
   }
 });
 
-
-
-// $section.on('click', ('.card__icon--downvote'), function(event){
-//   event.preventDefault();
-//   var cardId = $(this).closest('article').attr('id');
-//   console.log(cardId);
-//   getCards(key);
-//   if(this.quality === 'Genius'){
-//       this.quality = 'Plausible';
-//   } else if (this.quality === 'Plausible'){
-//     this.quality = 'Swill';
-//   }
-// });
-
+function qualityChange(id, newQuality) {
+  var cardId = localStorage.getItem(id);
+  var parsedCard = JSON.parse(cardId);
+  parsedCard.quality = newQuality;
+  var cardId = JSON.stringify(parsedCard);
+  localStorage.setItem(id, cardId);
+  }
 
 
 function clearInputs(){
