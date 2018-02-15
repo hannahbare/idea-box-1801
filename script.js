@@ -2,12 +2,14 @@ var $userInputTitle = $('#userinput__title');
 var $userInputBody = $('#userinput__body');
 var $saveBtn = $('#userinput__btn');
 var $section = $('.card__list');
+var $searchBar = $('#searchbar');
 
 $(document).ready(displayCardsToPage);
 $saveBtn.on('click', newInstance);
 $section.on('click', ('.card__icon--upvote'), changeUpvote);
 $section.on('click', ('.card__icon--downvote'), changeDownvote);
 $section.on('click', ('.card__icon--delete'), deleteCard);
+$searchBar.on('keyup', searchCards);
 
 function Card(quality){
   this.id = Date.now();
@@ -96,8 +98,26 @@ function qualityChange(id, newQuality) {
   localStorage.setItem(id, updatedCard);
   }
 
+function searchCards(){
+  var uiLowercase = $searchBar.val().toLowerCase();
+  var articleArray = $('article');
+  for(var i = 0; i < articleArray.length; i++){
+    var titleText = articleArray[i].children[0].innerText.toLowerCase();
+    console.log(titleText);
+    // debugger;
+    //turn titleText to lowercase
+    var bodyText = articleArray[i].children[2].innerText;
+    //turn bodytext to lowercase
+    // if(searchContent === !searchContent){
+    // }
+  }
+}
+
 function clearInputs(){
   $userInputTitle.val('');
   $userInputBody.val('');
 }
+
+
+
 
