@@ -101,17 +101,30 @@ function qualityChange(id, newQuality) {
 function searchCards(){
   var uiLowercase = $searchBar.val().toLowerCase();
   var articleArray = $('article');
+
+  
+
+
   for(var i = 0; i < articleArray.length; i++){
     var titleText = articleArray[i].children[0].innerText.toLowerCase();
+    var titleLetters = titleText.split("");
     console.log(titleText);
-    // debugger;
-    //turn titleText to lowercase
-    var bodyText = articleArray[i].children[2].innerText;
-    //turn bodytext to lowercase
-    // if(searchContent === !searchContent){
-    // }
+    var bodyText = articleArray[i].children[2].innerText.toLowerCase();
+
+
+
+    titleText.split("")
+
+  //   articleArray.find(function(element){
+  //     element.
+  //   })
+
+
+  //   $(titleText).(uiLowercase).css("background", "red");
   }
 }
+
+// debugger;
 
 function clearInputs(){
   $userInputTitle.val('');
