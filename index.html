@@ -4,6 +4,7 @@
   <title>Idea Box</title>
   <link rel="stylesheet" type="text/css" href="main.css">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab:700" rel="stylesheet">
+  <!-- <link rel="stylesheet" type="text/css" href="reset.css"> -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -11,12 +12,12 @@
     <form>
       <h1>idea<span class="title__color">box</span></h1>
       <input type="text" name="title" placeholder="Title" id="userinput__title" aria-label="Title input">
-      <input type="text" name="body" placeholder="Body" id="userinput__body" wrap="soft" aria-label="Body input">
+      <input type="text" name="body" placeholder="Body" wrap="soft" id="userinput__body" aria-label="Body input">
       <button type="button" id="userinput__btn">save</button>
     </form>
   </header>
   <section class="search">
-    <input type="text" name="search" placeholder="Search" aria-label="Search field" id="searchbar">
+    <input type="text" name="search" placeholder="Search" id="searchbar" aria-label="Search field">
   </section>
   <section class="card__list"></section>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
